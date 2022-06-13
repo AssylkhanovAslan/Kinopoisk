@@ -35,9 +35,7 @@ object MoviesRepository {
                     if (response.isSuccessful) {
                         val responseBody = response.body()
                         if (responseBody != null) onSuccess(responseBody.movies) else onError()
-                    } else {
-                        onError()
-                    }
+                    } else onError()
                 }
 
                 override fun onFailure(call: Call<MovieCategory>, t: Throwable) = onError()

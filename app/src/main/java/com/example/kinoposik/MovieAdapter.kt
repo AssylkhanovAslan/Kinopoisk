@@ -8,12 +8,8 @@ class MovieAdapter(
     private val clickListener: (movie: Movie) -> Unit
 ) : ListAdapter<Movie, MovieViewHolder>(MovieDiffUtilItemCallback()) {
 
-    private lateinit var parent: ViewGroup
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        this.parent = parent
-        return MovieViewHolder.inflateFrom(parent)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
+        MovieViewHolder.inflateFrom(parent)
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
         val movie = getItem(position)

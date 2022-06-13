@@ -8,8 +8,7 @@ import com.example.kinoposik.models.MovieCategory
 class MovieCategoryAdapter(
     private val movieCategories: List<MovieCategory>,
     private val clickListener: (movie: Movie) -> Unit
-) :
-    RecyclerView.Adapter<MovieCategoryViewHolder>() {
+) : RecyclerView.Adapter<MovieCategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         MovieCategoryViewHolder.inflateFrom(parent)
