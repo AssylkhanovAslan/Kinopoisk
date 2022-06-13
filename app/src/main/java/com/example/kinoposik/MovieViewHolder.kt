@@ -8,8 +8,9 @@ import com.example.kinoposik.models.Movie
 
 class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: Movie) {
+    fun bind(movie: Movie, clickListener: (movie: Movie) -> Unit) {
         binding.tvTitle.text = movie.title
+        binding.root.setOnClickListener { clickListener(movie) }
     }
 
     companion object {

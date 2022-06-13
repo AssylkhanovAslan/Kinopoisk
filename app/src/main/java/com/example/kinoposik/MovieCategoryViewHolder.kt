@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kinoposik.databinding.ItemMovieCategoryBinding
+import com.example.kinoposik.models.Movie
 import com.example.kinoposik.models.MovieCategory
 
 class MovieCategoryViewHolder(private val binding: ItemMovieCategoryBinding) :
@@ -11,9 +12,9 @@ class MovieCategoryViewHolder(private val binding: ItemMovieCategoryBinding) :
 
     private lateinit var adapter: MovieAdapter
 
-    fun bind(movieCategory: MovieCategory) {
+    fun bind(movieCategory: MovieCategory, clickListener: (movie: Movie) -> Unit) {
         binding.tvCategoryName.text = movieCategory.categoryName
-        adapter = MovieAdapter(movieCategory.movies)
+        adapter = MovieAdapter(movieCategory.movies, clickListener)
         binding.rvMovies.adapter = adapter
     }
 

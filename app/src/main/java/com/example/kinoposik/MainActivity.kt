@@ -22,7 +22,10 @@ class MainActivity : AppCompatActivity() {
         val movieCategories = mutableListOf<MovieCategory>()
         repeat(10) { movieCategories.add(MovieCategory("Category $it", movies))}
 
-        adapter = MovieCategoryAdapter(movieCategories)
+        adapter = MovieCategoryAdapter(movieCategories) { movie ->
+            val dialog = MovieDetailsBottomSheet(movie)
+            dialog.show(supportFragmentManager, MovieDetailsBottomSheet.TAG)
+        }
         binding.rvMovieCategories.adapter = adapter
 
         //Сделать nestedRecyclerView.
