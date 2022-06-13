@@ -24,12 +24,12 @@ class MovieAdapter(context: Context) : RecyclerView.Adapter<MovieAdapter.MovieVi
     @EntryPoint
     @InstallIn(SingletonComponent::class)
     interface MyEntryPoint {
-        fun provideGlideInstance(): RequestManager
+        fun getGlideInstance(): RequestManager
     }
 
     init {
         val myEntryPoint = EntryPointAccessors.fromApplication(context, MyEntryPoint::class.java)
-        glide = myEntryPoint.provideGlideInstance()
+        glide = myEntryPoint.getGlideInstance()
     }
 
     inner class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
