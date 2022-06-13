@@ -16,8 +16,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val movies = mutableListOf<Movie>()
-        repeat(10) { movies.add(Movie("Movie $it", "", ""))}
+        val movies = listOf(
+            Movie("Joker", "https://i2.wp.com/batman-news.com/wp-content/uploads/2019/08/Joker-Official-Images-Final-Poster-01.jpg?fit=2764%2C4096&quality=80&strip=info&ssl=1", ""),
+            Movie("Avatar 2", "https://i2.wp.com/batman-news.com/wp-content/uploads/2019/08/Joker-Official-Images-Final-Poster-01.jpg?fit=2764%2C4096&quality=80&strip=info&ssl=1", "")
+        )
 
         val movieCategories = mutableListOf<MovieCategory>()
         repeat(10) { movieCategories.add(MovieCategory("Category $it", movies))}
