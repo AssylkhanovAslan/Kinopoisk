@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="4dp"
-    android:background="@drawable/shape_rounded_corners"
+    app:cardCornerRadius="4dp"
     android:layout_width="117dp"
     android:layout_height="208dp">
 
@@ -15,8 +15,6 @@
             android:id="@+id/iv_poster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/shape_rounded_corners"
-            android:clipToOutline="true"
             android:contentDescription="@string/movie_poster"
             android:scaleType="centerCrop"
             android:src="@drawable/movie_poster_joker" />

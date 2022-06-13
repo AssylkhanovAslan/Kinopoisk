@@ -1,9 +1,10 @@
 package com.example.kinoposik
 
-import android.view.LayoutInflater
+import  android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.kinoposik.databinding.ItemMovieBinding
 import com.example.kinoposik.models.Movie
 
@@ -13,10 +14,14 @@ class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.View
         binding.tvTitle.text = movie.title
         binding.root.setOnClickListener { clickListener(movie) }
 
-        Glide.with(itemView.context).load(movie.img).into(binding.ivPoster)
+        Glide.with(itemView.context)
+            .load("$imageUrl${movie.img}")
+            .transform(CenterCrop())
+            .into(binding.ivPoster)
     }
 
     companion object {
+        private const val imageUrl = "https://image.tmdb.org/t/p/w342"
         fun inflateFrom(parent: ViewGroup) : MovieViewHolder {
             val layoutInflater = LayoutInflater.from(parent.context)
             val binding = ItemMovieBinding.inflate(layoutInflater, parent, false)

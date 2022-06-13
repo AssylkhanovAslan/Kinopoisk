@@ -20,6 +20,7 @@ class MovieDetailsBottomSheet(private val movie: Movie) : BottomSheetDialogFragm
     ): View {
         _binding = BottomSheetMovieDetailsBinding.inflate(inflater, container, false)
         binding.tvMovieTitle.text = movie.title
+        binding.tvMovieDescription.text = movie.description
         return binding.root
     }
 
