@@ -1,0 +1,22 @@
+package com.example.kinoposik
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.example.kinoposik.databinding.ItemMovieBinding
+import com.example.kinoposik.models.Movie
+
+class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+
+    fun bind(movie: Movie) {
+        binding.tvTitle.text = movie.title
+    }
+
+    companion object {
+        fun inflateFrom(parent: ViewGroup) : MovieViewHolder {
+            val layoutInflater = LayoutInflater.from(parent.context)
+            val binding = ItemMovieBinding.inflate(layoutInflater, parent, false)
+            return MovieViewHolder(binding)
+        }
+    }
+}
