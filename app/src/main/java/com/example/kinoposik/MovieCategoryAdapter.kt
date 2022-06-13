@@ -5,12 +5,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kinoposik.models.MovieCategory
 
 class MovieCategoryAdapter(private val movieCategories: List<MovieCategory>) :
-    RecyclerView.Adapter<CategoryViewHolder>() {
+    RecyclerView.Adapter<MovieCategoryViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        CategoryViewHolder.inflateFrom(parent)
+        MovieCategoryViewHolder.inflateFrom(parent)
 
-    override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MovieCategoryViewHolder, position: Int) {
         val category = movieCategories[position]
         holder.bind(category)
     }

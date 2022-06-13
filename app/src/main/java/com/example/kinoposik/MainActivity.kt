@@ -1,12 +1,29 @@
 package com.example.kinoposik
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.kinoposik.databinding.ActivityMainBinding
+import com.example.kinoposik.models.Movie
+import com.example.kinoposik.models.MovieCategory
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var adapter: MovieCategoryAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        val movies = mutableListOf<Movie>()
+        repeat(10) { movies.add(Movie("Movie $it", "", ""))}
+
+        val movieCategories = mutableListOf<MovieCategory>()
+        repeat(10) { movieCategories.add(MovieCategory("Category $it", movies))}
+
+        adapter = MovieCategoryAdapter(movieCategories)
+        binding.rvMovieCategories.adapter = adapter
 
         //Сделать nestedRecyclerView.
 
