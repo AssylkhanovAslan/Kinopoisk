@@ -16,7 +16,7 @@ class MovieCategoryViewHolder(private val binding: ItemMovieCategoryBinding) :
 
     fun bind(movieCategory: MovieCategory, clickListener: (movie: Movie) -> Unit) {
         binding.tvCategoryName.text = movieCategory.categoryName
-        adapter = MovieAdapter(movieCategory.movies, clickListener)
+        adapter = MovieAdapter(clickListener)
         binding.rvMovies.adapter = adapter
 
         MoviesRepository.getMovies(
@@ -27,7 +27,7 @@ class MovieCategoryViewHolder(private val binding: ItemMovieCategoryBinding) :
     }
 
     private fun onPopularMoviesFetched(movies: List<Movie>) {
-        adapter.updateMovies(movies)
+        adapter.submitList(movies)
     }
 
     private fun onError() {

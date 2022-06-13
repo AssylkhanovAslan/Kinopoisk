@@ -1,15 +1,12 @@
 package com.example.kinoposik
 
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
-import com.example.kinoposik.api.MoviesRepository
+import androidx.recyclerview.widget.ListAdapter
 import com.example.kinoposik.models.Movie
 
 class MovieAdapter(
-    private var movies: List<Movie>,
     private val clickListener: (movie: Movie) -> Unit
-) : RecyclerView.Adapter<MovieViewHolder>() {
+) : ListAdapter<Movie, MovieViewHolder>(MovieDiffUtilItemCallback()) {
 
     private lateinit var parent: ViewGroup
 
@@ -19,15 +16,7 @@ class MovieAdapter(
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie = movies[position]
-
+        val movie = getItem(position)
         holder.bind(movie, clickListener)
-    }
-
-    override fun getItemCount() = movies.size
-
-    fun updateMovies(movies: List<Movie>) {
-        this.movies = movies
-        notifyDataSetChanged()
     }
 }
