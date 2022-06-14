@@ -5,32 +5,35 @@ import com.example.kinoposik.models.MovieCategory
 
 object MoviesDatabase {
 
-    val animesList = listOf(
+    private val animesList = listOf(
         Movie(
             "Унесённые призраками (2001)",
             "https://upload.wikimedia.org/wikipedia/ru/6/61/Spirited_away.jpg",
-        "Девочка должна спасти своих родителей в мире духов. Шедевр Хаяо Миядзаки, фаворит анимационных рейтингов мира"
+            "Девочка должна спасти своих родителей в мире духов. Шедевр Хаяо Миядзаки, фаворит анимационных рейтингов мира"
         ),
         Movie(
             "Ходячий замок (2004)",
             "https://upload.wikimedia.org/wikipedia/ru/4/40/Hd.jpg",
             "Злая колдунья превращает юную Софи в старушку. Волшебная сказка о силе любви по мотивам книги Дианы Уинн Джонс"
-        ),        Movie(
+        ),
+        Movie(
             "Твоё имя (2016)",
             "https://upload.wikimedia.org/wikipedia/ru/thumb/2/2c/Kimi_no_Na_wa.jpg/345px-Kimi_no_Na_wa.jpg",
             "Токийский парень Таки и провинциальная девушка Мицуха обнаруживают, что между ними существует странная связь. Во сне они меняются телами и проживают жизни друг друга. Но однажды эта способность исчезает так же внезапно, как появилась. Таки решает во что бы то ни стало отыскать Мицуху."
-        ),        Movie(
+        ),
+        Movie(
             "Принцесса Мононоке (1997)",
             "https://upload.wikimedia.org/wikipedia/ru/3/38/Mononoke_Hime_DVD_Cover.jpg",
             "Заколдованный принц и лесная принцесса борются с древним демоном и его рабами. Аниме-блокбастер Хаяо Миадзаки"
-        ),        Movie(
+        ),
+        Movie(
             "Форма голоса (2016)",
             "https://upload.wikimedia.org/wikipedia/ru/5/55/Koe_no_katachi_cover_01.326x486.jpg",
             "Молодой человек Сёя Исида внезапно осознаёт, что в школе умудрился превратить жизнь одноклассницы Сёко в ад только потому, что та была глухая. И теперь, хоть и запоздало, парень понял — чтобы сказать нечто важное тому, кто не может тебя услышать, вовсе не обязательно использовать голос."
         ),
     )
 
-    val comediesList = listOf(
+    private val comediesList = listOf(
         Movie(
             "Иван Васильевич меняет профессию (1973)",
             "https://static.hdrezka.ac/i/2014/4/3/e417e65ea9f13ym33t54n.jpg",
@@ -58,7 +61,7 @@ object MoviesDatabase {
         )
     )
 
-    val cartoonsList = listOf(
+    private val cartoonsList = listOf(
         Movie(
             "Тайна Коко (2017)",
             "https://upload.wikimedia.org/wikipedia/ru/d/d7/Coco_%282017_film%29_logo.jpg",
@@ -86,17 +89,17 @@ object MoviesDatabase {
         )
     )
 
-    val category_anime = MovieCategory(
+    private val category_anime = MovieCategory(
         "Аниме",
         animesList
     )
 
-    val category_comedies = MovieCategory(
+    private val category_comedies = MovieCategory(
         "Комедии",
         comediesList
     )
 
-    val category_cartoons = MovieCategory(
+    private val category_cartoons = MovieCategory(
         "Мультики",
         cartoonsList
     )

@@ -65,7 +65,6 @@ class MovieAdapter(context: Context) : RecyclerView.Adapter<MovieAdapter.MovieVi
         holder.itemView.apply {
             glide
                 .load(movie.imgUrl)
-                .placeholder(R.drawable.ic_launcher_background)
                 .centerCrop()
                 .into(imgMoviePoster)
             txtMovieTitle.text = movie.title

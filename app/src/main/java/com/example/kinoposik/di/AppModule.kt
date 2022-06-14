@@ -23,7 +23,7 @@ object AppModule {
     ) = Glide.with(context).setDefaultRequestOptions(
         RequestOptions()
             .placeholder(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_foreground)
             .diskCacheStrategy(DiskCacheStrategy.DATA)
     )
 
