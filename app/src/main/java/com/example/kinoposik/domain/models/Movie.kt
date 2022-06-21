@@ -1,4 +1,4 @@
-package com.example.kinoposik.models
+package com.example.kinoposik.domain.models
 
 data class Movie(
     val title: String,
