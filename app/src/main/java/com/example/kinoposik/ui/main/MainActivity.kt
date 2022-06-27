@@ -1,31 +1,17 @@
-package com.example.kinoposik
+package com.example.kinoposik.ui.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kinoposik.databinding.ActivityMainBinding
-import com.example.kinoposik.models.MovieCategory
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: MovieCategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val movieCategories = mutableListOf<MovieCategory>()
-        movieCategories.add(MovieCategory("Popular", "popular", listOf()))
-        movieCategories.add(MovieCategory("Top rated", "top_rated", listOf()))
-        movieCategories.add(MovieCategory("Upcoming", "upcoming", listOf()))
-
-        adapter = MovieCategoryAdapter(movieCategories) { movie ->
-            val dialog = MovieDetailsBottomSheet(movie)
-            dialog.show(supportFragmentManager, MovieDetailsBottomSheet.TAG)
-        }
-
-        binding.rvMovieCategories.adapter = adapter
     }
 }
 

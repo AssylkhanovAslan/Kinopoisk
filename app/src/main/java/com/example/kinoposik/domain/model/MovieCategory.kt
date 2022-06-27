@@ -1,4 +1,4 @@
-package com.example.kinoposik.models
+package com.example.kinoposik.domain.model
 
 import com.google.gson.annotations.SerializedName
 

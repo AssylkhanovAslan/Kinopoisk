@@ -1,6 +1,6 @@
-package com.example.kinoposik.api
+package com.example.kinoposik.network
 
-import com.example.kinoposik.models.MovieCategory
+import com.example.kinoposik.domain.model.MovieCategory
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

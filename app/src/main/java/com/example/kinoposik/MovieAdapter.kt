@@ -2,7 +2,7 @@ package com.example.kinoposik
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.kinoposik.models.Movie
+import com.example.kinoposik.domain.model.Movie
 
 class MovieAdapter(
     private val clickListener: (movie: Movie) -> Unit
