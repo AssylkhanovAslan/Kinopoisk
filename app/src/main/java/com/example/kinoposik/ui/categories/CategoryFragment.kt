@@ -6,12 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.example.kinoposik.MovieCategoryAdapter
-import com.example.kinoposik.MovieDetailsBottomSheet
+import com.example.kinoposik.adapters.MovieCategoryAdapter
+import com.example.kinoposik.ui.moviedetails.MovieDetailsBottomSheet
 import com.example.kinoposik.R
+import com.example.kinoposik.data.MoviesRepository
 import com.example.kinoposik.databinding.FragmentCategoryBinding
-import com.example.kinoposik.domain.model.Movie
-import com.example.kinoposik.domain.model.MovieCategory
+import com.example.kinoposik.domain.models.Movie
+import com.example.kinoposik.domain.models.MovieCategory
+import org.koin.android.ext.android.inject
 
 class CategoryFragment : Fragment() {
 
@@ -19,6 +21,7 @@ class CategoryFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var adapter: MovieCategoryAdapter
+    private val moviesRepository: MoviesRepository by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +45,7 @@ class CategoryFragment : Fragment() {
                 .navigate(direction)
         }
 
-        adapter = MovieCategoryAdapter(movieCategories, onPosterClick, onArrayClick)
+        adapter = MovieCategoryAdapter(moviesRepository, movieCategories, onPosterClick, onArrayClick)
 
         binding.rvMovieCategories.adapter = adapter
         return binding.root

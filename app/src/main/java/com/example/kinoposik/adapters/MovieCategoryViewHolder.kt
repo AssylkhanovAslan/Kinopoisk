@@ -1,13 +1,13 @@
-package com.example.kinoposik
+package com.example.kinoposik.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kinoposik.network.MoviesRepository
+import com.example.kinoposik.data.MoviesRepository
 import com.example.kinoposik.databinding.ItemMovieCategoryBinding
-import com.example.kinoposik.domain.model.Movie
-import com.example.kinoposik.domain.model.MovieCategory
+import com.example.kinoposik.domain.models.Movie
+import com.example.kinoposik.domain.models.MovieCategory
 
 class MovieCategoryViewHolder(
     private val binding: ItemMovieCategoryBinding,
@@ -16,13 +16,13 @@ class MovieCategoryViewHolder(
 
     private lateinit var adapter: MovieAdapter
 
-    fun bind(movieCategory: MovieCategory, clickListener: (movie: Movie) -> Unit) {
+    fun bind(repo: MoviesRepository, movieCategory: MovieCategory, clickListener: (movie: Movie) -> Unit) {
         binding.tvCategoryName.text = movieCategory.categoryName
         adapter = MovieAdapter(clickListener)
         binding.rvMovies.adapter = adapter
         binding.ibMore.setOnClickListener { onClick(movieCategory.categoryPath) }
 
-        MoviesRepository.getMovies(
+        repo.getMovies(
             onSuccess = ::onMoviesFetched,
             onError = ::onError,
             category = movieCategory.categoryPath

@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.kinoposik.MovieAdapter
-import com.example.kinoposik.MovieDetailsBottomSheet
+import com.example.kinoposik.adapters.MovieAdapter
+import com.example.kinoposik.ui.moviedetails.MovieDetailsBottomSheet
 import com.example.kinoposik.databinding.FragmentMovieBinding
-import com.example.kinoposik.domain.model.Movie
-import com.example.kinoposik.network.MoviesRepository
+import com.example.kinoposik.domain.models.Movie
+import com.example.kinoposik.data.MoviesRepository
+import org.koin.android.ext.android.inject
 
 class MovieFragment : Fragment() {
 
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
+
+    private val moviesRepository: MoviesRepository by inject()
 
     private lateinit var args: MovieFragmentArgs
     private lateinit var adapter: MovieAdapter
@@ -33,7 +36,7 @@ class MovieFragment : Fragment() {
         binding.tvCategory.text = args.category
         binding.rvMovies.adapter = adapter
 
-        MoviesRepository.getMovies(
+        moviesRepository.getMovies(
             onSuccess = ::onMoviesFetched,
             onError = ::onError,
             category = args.category

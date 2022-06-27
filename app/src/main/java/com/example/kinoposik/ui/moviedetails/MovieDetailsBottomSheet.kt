@@ -1,11 +1,11 @@
-package com.example.kinoposik
+package com.example.kinoposik.ui.moviedetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.kinoposik.databinding.BottomSheetMovieDetailsBinding
-import com.example.kinoposik.domain.model.Movie
+import com.example.kinoposik.domain.models.Movie
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class MovieDetailsBottomSheet(private val movie: Movie) : BottomSheetDialogFragment() {

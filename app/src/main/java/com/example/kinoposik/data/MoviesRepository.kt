@@ -1,25 +1,25 @@
-package com.example.kinoposik.network
+package com.example.kinoposik.data
 
-import com.example.kinoposik.domain.model.Movie
-import com.example.kinoposik.domain.model.MovieCategory
+import com.example.kinoposik.data.network.MovieService
+import com.example.kinoposik.domain.models.Movie
+import com.example.kinoposik.domain.models.MovieCategory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
-object MoviesRepository {
+class MoviesRepository(private val retrofit: Retrofit) {
 
-    private val api: Api
+    private val api = retrofit.create(MovieService::class.java)
 
-    init {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        api = retrofit.create(Api::class.java)
-    }
+//    init {
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://api.themoviedb.org/3/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        api = retrofit.create(MovieService::class.java)
+//    }
 
     fun getMovies(
         category: String,

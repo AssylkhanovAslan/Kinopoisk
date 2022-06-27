@@ -1,4 +1,4 @@
-package com.example.kinoposik
+package com.example.kinoposik.adapters
 
 import  android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.example.kinoposik.databinding.ItemMovieBinding
-import com.example.kinoposik.domain.model.Movie
+import com.example.kinoposik.domain.models.Movie
 
 class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 

@@ -1,7 +1,7 @@
-package com.example.kinoposik
+package com.example.kinoposik.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.kinoposik.domain.model.Movie
+import com.example.kinoposik.domain.models.Movie
 
 class MovieDiffUtilItemCallback: DiffUtil.ItemCallback<Movie>() {
     override fun areItemsTheSame(oldItem: Movie, newItem: Movie) = oldItem.id == newItem.id

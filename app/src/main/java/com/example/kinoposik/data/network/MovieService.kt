@@ -1,12 +1,12 @@
-package com.example.kinoposik.network
+package com.example.kinoposik.data.network
 
-import com.example.kinoposik.domain.model.MovieCategory
+import com.example.kinoposik.domain.models.MovieCategory
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface Api {
+interface MovieService {
 
     @GET("movie/{category}")
     fun getMovies(
