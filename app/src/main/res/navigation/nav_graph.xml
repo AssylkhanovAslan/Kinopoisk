@@ -18,5 +18,9 @@
         android:id="@+id/movieFragment"
         android:name="com.example.kinoposik.ui.movies.MovieFragment"
         android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" />
+        tools:layout="@layout/fragment_movie" >
+        <argument
+            android:name="category"
+            app:argType="string" />
+    </fragment>
 </navigation>

@@ -36,12 +36,13 @@ class CategoryFragment : Fragment() {
             dialog.show(parentFragmentManager, MovieDetailsBottomSheet.TAG)
         }
 
-        val onArrawClick = { category: String ->
+        val onArrayClick = { category: String ->
+            val direction = CategoryFragmentDirections.actionCategoryFragmentToMovieFragment(category)
             requireActivity().findNavController(R.id.nav_host_fragment_container)
-                .navigate(R.id.action_categoryFragment_to_movieFragment)
+                .navigate(direction)
         }
 
-        adapter = MovieCategoryAdapter(movieCategories, onPosterClick, onArrawClick)
+        adapter = MovieCategoryAdapter(movieCategories, onPosterClick, onArrayClick)
 
         binding.rvMovieCategories.adapter = adapter
         return binding.root

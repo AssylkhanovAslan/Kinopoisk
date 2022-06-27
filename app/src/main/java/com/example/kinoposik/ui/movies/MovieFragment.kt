@@ -16,28 +16,38 @@ class MovieFragment : Fragment() {
 
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
-    private val category = "popular"
 
+    private lateinit var args: MovieFragmentArgs
     private lateinit var adapter: MovieAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        setupArguments()
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
         adapter = MovieAdapter { movie: Movie ->
             val dialog = MovieDetailsBottomSheet(movie)
             dialog.show(parentFragmentManager, MovieDetailsBottomSheet.TAG)
         }
-        binding.tvCategory.text = category
+        binding.tvCategory.text = args.category
         binding.rvMovies.adapter = adapter
 
         MoviesRepository.getMovies(
             onSuccess = ::onMoviesFetched,
             onError = ::onError,
-            category = category
+            category = args.category
         )
         return binding.root
+    }
+
+    private fun setupArguments() {
+        val bundle = arguments
+        if (bundle == null) {
+            Log.e("Movie", "MovieFragment did not receive arguments")
+            return
+        }
+        args = MovieFragmentArgs.fromBundle(bundle)
     }
 
     private fun onMoviesFetched(movies: List<Movie>) {
@@ -45,7 +55,7 @@ class MovieFragment : Fragment() {
     }
 
     private fun onError() {
-        Log.e(TAG, "Error fetching movies: category = $category")
+        Log.e(TAG, "Error fetching movies: category = ${args.category}")
     }
 
     override fun onDestroyView() {
