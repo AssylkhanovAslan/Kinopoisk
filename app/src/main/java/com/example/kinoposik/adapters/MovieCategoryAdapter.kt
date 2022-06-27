@@ -9,7 +9,7 @@ import com.example.kinoposik.domain.models.MovieCategory
 class MovieCategoryAdapter(
     private val moviesRepository: MoviesRepository,
     private val movieCategories: List<MovieCategory>,
-    private val onPosterClick: (movie: Movie) -> Unit,
+    private val onPosterClick: (movieId: Int) -> Unit,
     private val onArrowClick: (category: String) -> Unit
 ) : RecyclerView.Adapter<MovieCategoryViewHolder>() {
 

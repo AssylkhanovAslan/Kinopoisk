@@ -16,7 +16,7 @@ class MovieCategoryViewHolder(
 
     private lateinit var adapter: MovieAdapter
 
-    fun bind(repo: MoviesRepository, movieCategory: MovieCategory, clickListener: (movie: Movie) -> Unit) {
+    fun bind(repo: MoviesRepository, movieCategory: MovieCategory, clickListener: (movieId: Int) -> Unit) {
         binding.tvCategoryName.text = movieCategory.categoryName
         adapter = MovieAdapter(clickListener)
         binding.rvMovies.adapter = adapter

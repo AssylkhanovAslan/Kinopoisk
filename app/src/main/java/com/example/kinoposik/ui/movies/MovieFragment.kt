@@ -29,9 +29,8 @@ class MovieFragment : Fragment() {
     ): View {
         setupArguments()
         _binding = FragmentMovieBinding.inflate(inflater, container, false)
-        adapter = MovieAdapter { movie: Movie ->
-            val dialog = MovieDetailsBottomSheet(movie)
-            dialog.show(parentFragmentManager, MovieDetailsBottomSheet.TAG)
+        adapter = MovieAdapter { movieId: Int ->
+            moviesRepository.getMovie(movieId, ::fetchMovie, ::errorFetchMovie)
         }
         binding.tvCategory.text = args.category
         binding.rvMovies.adapter = adapter
@@ -59,6 +58,15 @@ class MovieFragment : Fragment() {
 
     private fun onError() {
         Log.e(TAG, "Error fetching movies: category = ${args.category}")
+    }
+
+    private fun fetchMovie(movie: Movie) {
+        val dialog = MovieDetailsBottomSheet(movie)
+        dialog.show(parentFragmentManager, MovieDetailsBottomSheet.TAG)
+    }
+
+    private fun errorFetchMovie() {
+        Log.e(TAG, "Error loading movie")
     }
 
     override fun onDestroyView() {

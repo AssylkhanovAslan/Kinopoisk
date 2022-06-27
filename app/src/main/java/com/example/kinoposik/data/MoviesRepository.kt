@@ -10,23 +10,14 @@ import retrofit2.Retrofit
 
 class MoviesRepository(private val retrofit: Retrofit) {
 
-    private val api = retrofit.create(MovieService::class.java)
-
-//    init {
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://api.themoviedb.org/3/")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        api = retrofit.create(MovieService::class.java)
-//    }
+    private val service = retrofit.create(MovieService::class.java)
 
     fun getMovies(
         category: String,
         onSuccess: (movies: List<Movie>) -> Unit,
         onError: () -> Unit
     ) {
-        api.getMovies(category = category)
+        service.getMovies(category = category)
             .enqueue(object : Callback<MovieCategory> {
                 override fun onResponse(
                     call: Call<MovieCategory>,
@@ -39,6 +30,24 @@ class MoviesRepository(private val retrofit: Retrofit) {
                 }
 
                 override fun onFailure(call: Call<MovieCategory>, t: Throwable) = onError()
+            })
+    }
+
+    fun getMovie(
+        id: Int,
+        onSuccess: (movie: Movie) -> Unit,
+        onError: () -> Unit
+    ) {
+        service.getMovie(id = id)
+            .enqueue(object  : Callback<Movie> {
+                override fun onResponse(call: Call<Movie>, response: Response<Movie>) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        if (responseBody != null) onSuccess(responseBody) else onError()
+                    } else onError()
+                }
+
+                override fun onFailure(call: Call<Movie>, t: Throwable) = onError()
             })
     }
 }

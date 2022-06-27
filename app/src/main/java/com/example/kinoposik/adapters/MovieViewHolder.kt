@@ -10,9 +10,9 @@ import com.example.kinoposik.domain.models.Movie
 
 class MovieViewHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(movie: Movie, clickListener: (movie: Movie) -> Unit) {
+    fun bind(movie: Movie, clickListener: (movieInt: Int) -> Unit) {
         binding.tvTitle.text = movie.title
-        binding.root.setOnClickListener { clickListener(movie) }
+        binding.root.setOnClickListener { clickListener(movie.id) }
 
         Glide.with(itemView.context)
             .load("$imageUrl${movie.img}")

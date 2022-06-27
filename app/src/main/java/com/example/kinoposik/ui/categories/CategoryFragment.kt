@@ -1,6 +1,7 @@
 package com.example.kinoposik.ui.categories
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,8 @@ import com.example.kinoposik.domain.models.MovieCategory
 import org.koin.android.ext.android.inject
 
 class CategoryFragment : Fragment() {
+
+    private val TAG = this::class.java.simpleName
 
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
@@ -34,9 +37,8 @@ class CategoryFragment : Fragment() {
         movieCategories.add(MovieCategory("Top rated", "top_rated", listOf()))
         movieCategories.add(MovieCategory("Upcoming", "upcoming", listOf()))
 
-        val onPosterClick = { movie: Movie ->
-            val dialog = MovieDetailsBottomSheet(movie)
-            dialog.show(parentFragmentManager, MovieDetailsBottomSheet.TAG)
+        val onPosterClick = { movieId: Int ->
+            moviesRepository.getMovie(movieId, ::fetchMovie, ::errorFetchMovie)
         }
 
         val onArrayClick = { category: String ->
@@ -54,5 +56,14 @@ class CategoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun fetchMovie(movie: Movie) {
+        val dialog = MovieDetailsBottomSheet(movie)
+        dialog.show(parentFragmentManager, MovieDetailsBottomSheet.TAG)
+    }
+
+    private fun errorFetchMovie() {
+        Log.e(TAG, "Error loading movie")
     }
 }

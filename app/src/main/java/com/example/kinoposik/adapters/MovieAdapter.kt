@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.kinoposik.domain.models.Movie
 
 class MovieAdapter(
-    private val clickListener: (movie: Movie) -> Unit
+    private val clickListener: (movieId: Int) -> Unit
 ) : ListAdapter<Movie, MovieViewHolder>(MovieDiffUtilItemCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
