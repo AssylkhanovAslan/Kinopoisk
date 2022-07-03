@@ -1,18 +1,14 @@
 package com.example.kinoposik.domain.models.tmdb
 
-data class TmdbMovie(
-    val adult: Boolean,
-    val backdrop_path: String,
-    val genre_ids: List<Int>,
-    val id: Int,
-    val original_language: String,
-    val original_title: String,
-    val overview: String,
-    val popularity: Double,
-    val poster_path: String,
-    val release_date: String,
-    val title: String,
-    val video: Boolean,
-    val vote_average: Double,
-    val vote_count: Int
+import com.google.gson.annotations.SerializedName
+
+data class TmdbMovie (
+    @SerializedName("id"                ) var id               : Int?           = null,
+    @SerializedName("original_language" ) var originalLanguage : String?        = null,
+    @SerializedName("original_title"    ) var originalTitle    : String?        = null,
+    @SerializedName("overview"          ) var overview         : String?        = null,
+    @SerializedName("popularity"        ) var popularity       : Double?        = null,
+    @SerializedName("poster_path"       ) var posterPath       : String?        = null,
+    @SerializedName("release_date"      ) var releaseDate      : String?        = null,
+    @SerializedName("title"             ) var title            : String?        = null,
 )
