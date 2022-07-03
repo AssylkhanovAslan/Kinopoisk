@@ -1,26 +1,32 @@
 package com.example.kinoposik.presentation.main
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
-import androidx.lifecycle.get
-import com.example.kinoposik.R
+import com.example.kinoposik.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+    lateinit var adapter: MovieAdapter
 
     private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+
+        adapter = MovieAdapter(::onItemClick)
 
         viewModel.movieCategories.observe(this) { movieCategories ->
-            //Здесь сабмитить данные для адаптера
+            adapter.submitList(movieCategories)
+            adapter.notifyDataSetChanged()
         }
+
+        binding.rvMovie.adapter = adapter
+
 
         //Сделать nestedRecyclerView.
 
@@ -33,5 +39,9 @@ class MainActivity : AppCompatActivity() {
 
         //*Добавить функционал onClick-а. При нажатии открывать BottomSheet с данным о фильме
 
+    }
+
+    private fun onItemClick(movieId: Int) {
+        MovieDetailsBottomSheet(movieId).show(supportFragmentManager, null)
     }
 }
