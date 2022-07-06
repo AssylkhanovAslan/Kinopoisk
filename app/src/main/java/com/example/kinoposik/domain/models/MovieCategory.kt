@@ -1,4 +1,4 @@
-package com.example.kinoposik.models
+package com.example.kinoposik.domain.models
 
 data class MovieCategory(
     val categoryName: String,
